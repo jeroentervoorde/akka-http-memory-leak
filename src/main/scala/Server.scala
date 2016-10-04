@@ -15,8 +15,10 @@ object Server extends App {
 
   val route = {
     pathPrefix("ping") {
-      get {
-        complete( (StatusCodes.OK, "pong") )
+      post {
+        entity(as[String]) { str =>
+          complete( (StatusCodes.OK, "pong") )
+        }
       }
     }
   }
